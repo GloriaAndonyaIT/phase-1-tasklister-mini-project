@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (taskText === "") return;
 
     const taskItem = document.createElement("li");
-    taskItem.innerHTML = <strong>${taskText}</strong> (Assigned  to : ${userText});
+    taskItem.innerHTML = <strong>${taskText}</strong> (Assigned to: ${userText});
     taskItem.style.color = getPriorityColor(priority);
     taskItem.style.transition = "all 0.3s ease";
 
@@ -51,23 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
       taskItem.remove();
     });
 
-    const timerButton = document.createElement("button");
-    timerButton.textContent = "⏳ Start Timer";
-    timerButton.style.marginLeft = "10px";
-    timerButton.addEventListener("click", () => {
-      let timeLeft = 10;
-      timerButton.disabled = true;
-      timerButton.textContent = ⏳ ${timeLeft}s;
-      const countdown = setInterval(() => {
-        timeLeft--;
-        timerButton.textContent = ⏳ ${timeLeft}s;
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          timerButton.textContent = "✅ Time's Up!";
-          taskItem.style.backgroundColor = "#ffdddd";
-        }
-      }, 1000);
-    });
 
     taskItem.appendChild(completeButton);
     taskItem.appendChild(editButton);
@@ -77,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     taskInput.value = "";
     userInput.value = "";
-
   });
 
   function getPriorityColor(priority) {
